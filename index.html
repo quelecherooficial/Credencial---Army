@@ -473,9 +473,13 @@
     }else{
       slotPlaceholder(24, bandY+16, W-48, bandH-32, 28, 'Espacio para tu foto de grupo (horizontal)', pal);
     }
-    var fade = ctx.createLinearGradient(0,bandY,0,bandY+bandH*0.62);
+    // FADE_ALTO: qué tanto de la franja se cubre con el degradado (0 a 1, más alto = transición más larga y suave)
+// TINTE: una capa pareja de color sobre toda la foto para unificarla con el fondo (0 = nada, 0.4 = fuerte)
+    var FADE_ALTO = 0.85, TINTE = 0.22;
+    var fade = ctx.createLinearGradient(0,bandY,0,bandY+bandH*FADE_ALTO);
     fade.addColorStop(0, hexA(pal[0],1)); fade.addColorStop(1, hexA(pal[0],0));
-    ctx.fillStyle = fade; ctx.fillRect(0,bandY,W,bandH*0.62);
+    ctx.fillStyle = fade; ctx.fillRect(0,bandY,W,bandH*FADE_ALTO);
+    ctx.fillStyle = hexA(pal[0],TINTE); ctx.fillRect(0,bandY,W,bandH);
 
     var FOOTER_LINE1 = 'Comunidad de lecheros 💜', FOOTER_LINE2 = 'Únete en ' + CONFIG.handle;
     ctx.textAlign = 'center'; ctx.font = '700 34px '+FB; ctx.fillStyle = '#fff';
