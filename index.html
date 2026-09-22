@@ -428,50 +428,48 @@
     rr(540-bw/2, cy+494, bw, 84, 42); ctx.fillStyle = pal[2]; ctx.fill();
     ctx.textAlign = 'center'; ctx.fillStyle = '#1b0d36'; ctx.fillText(bt,540,cy+551);
 
-    ctx.font = '700 33px '+FB; ctx.fillStyle = rank ? '#3d2a72' : '#9686c4';
+    var DESC_SIZE = 38, DESC_LINE_H = 48, DESC_Y = cy+652;
+    ctx.font = '700 '+DESC_SIZE+'px '+FB; ctx.fillStyle = rank ? '#3d2a72' : '#9686c4';
     var descLines = wrap(rk.desc,780).slice(0,3);
-    descLines.forEach(function(line,li){ ctx.fillText(line,540,cy+632+li*44); });
-    var descBottom = cy+632 + (descLines.length-1)*44;
+    descLines.forEach(function(line,li){ ctx.fillText(line,540,DESC_Y+li*DESC_LINE_H); });
+    var descBottom = DESC_Y + (descLines.length-1)*DESC_LINE_H;
 
-    /* ID — discreto, ya no protagonista */
-    var idY = descBottom + 56;
-    rr(300,idY,480,86,30); ctx.fillStyle = pal[0]; ctx.fill(); ctx.lineWidth = 3; ctx.strokeStyle = pal[1]; ctx.stroke();
-    ctx.textAlign = 'center'; ctx.font = '600 19px '+FB; ctx.fillStyle = pal[2]; ctx.fillText('ID',540,idY+28);
-    var isz = fit(id,420,34,18,'800',FD);
-    ctx.font = '800 '+isz+'px '+FD; ctx.fillStyle = '#fff'; ctx.fillText(id,540,idY+66);
-
-    /* Marca: sello o logo de Que Lecherx + QR */
-    var sealY = idY+150;
+    // Tamaño y posición del texto del rango: sube DESC_SIZE para agrandarlo,
+    // y DESC_Y para bajar todo el bloque (más alto = más abajo).
+    var rowY = descBottom + 110;
+    var sx2 = 230, r2 = 78;
     if(IMAGES.brand){
-      var sx2 = 230, r2 = 78;
-      ctx.save(); ctx.beginPath(); ctx.arc(sx2,sealY,r2,0,7); ctx.clip();
+      ctx.save(); ctx.beginPath(); ctx.arc(sx2,rowY,r2,0,7); ctx.clip();
       var cov = cover(IMAGES.brand, r2*2, r2*2);
-      ctx.drawImage(IMAGES.brand, sx2-cov.w/2, sealY-cov.h/2, cov.w, cov.h);
+      ctx.drawImage(IMAGES.brand, sx2-cov.w/2, rowY-cov.h/2, cov.w, cov.h);
       ctx.restore();
-      ctx.lineWidth = 5; ctx.strokeStyle = pal[1]; ctx.beginPath(); ctx.arc(sx2,sealY,r2,0,7); ctx.stroke();
+      ctx.lineWidth = 5; ctx.strokeStyle = pal[1]; ctx.beginPath(); ctx.arc(sx2,rowY,r2,0,7); ctx.stroke();
     }else{
-      var sx3 = 230;
-      ctx.beginPath(); ctx.arc(sx3,sealY,78,0,7); ctx.fillStyle = pal[0]; ctx.fill(); ctx.lineWidth = 5; ctx.strokeStyle = pal[1]; ctx.stroke();
-      ctx.beginPath(); ctx.arc(sx3,sealY,64,0,7); ctx.setLineDash([6,8]); ctx.lineWidth = 3; ctx.strokeStyle = pal[2]; ctx.stroke(); ctx.setLineDash([]);
-      ctx.fillStyle = '#fff'; ctx.font = '900 50px '+FD; ctx.fillText('QL',sx3,sealY+8);
+      ctx.beginPath(); ctx.arc(sx2,rowY,r2,0,7); ctx.fillStyle = pal[0]; ctx.fill(); ctx.lineWidth = 5; ctx.strokeStyle = pal[1]; ctx.stroke();
+      ctx.beginPath(); ctx.arc(sx2,rowY,64,0,7); ctx.setLineDash([6,8]); ctx.lineWidth = 3; ctx.strokeStyle = pal[2]; ctx.stroke(); ctx.setLineDash([]);
+      ctx.textAlign = 'center'; ctx.fillStyle = '#fff'; ctx.font = '900 50px '+FD; ctx.fillText('QL',sx2,rowY+8);
       ctx.fillStyle = pal[2]; ctx.font = '800 15px '+FD; if('letterSpacing' in ctx) ctx.letterSpacing = '3px';
-      ctx.fillText('OFICIAL',sx3+1,sealY+38); if('letterSpacing' in ctx) ctx.letterSpacing = '0px';
+      ctx.fillText('OFICIAL',sx2+1,rowY+38); if('letterSpacing' in ctx) ctx.letterSpacing = '0px';
     }
 
-    ctx.textAlign = 'left';
-    var csz = fit(CONFIG.community,400,30,18,'800',FD);
-    ctx.font = '800 '+csz+'px '+FD; ctx.fillStyle = '#24104a'; ctx.fillText(CONFIG.community,340,sealY-4);
-    ctx.font = '500 28px '+FB; ctx.fillStyle = '#5b3fa8'; ctx.fillText(CONFIG.handle,340,sealY+36);
-
+    var qx = 800, qy = rowY-75, qs = 150;
     if(typeof qrcode === 'function'){
       try{
         var q = qrcode(0,'M'); q.addData(CONFIG.url); q.make();
-        var n = q.getModuleCount(), qx = 790, qy = sealY-72, qs = 150, pad = 13, cell = (qs-pad*2)/n;
+        var n = q.getModuleCount(), pad = 13, cell = (qs-pad*2)/n;
         rr(qx,qy,qs,qs,20); ctx.fillStyle = '#fff'; ctx.fill(); ctx.lineWidth = 3; ctx.strokeStyle = '#d9cdf5'; ctx.stroke();
         ctx.fillStyle = '#24104a';
         for(var r=0;r<n;r++){ for(var c=0;c<n;c++){ if(q.isDark(r,c)) ctx.fillRect(qx+pad+c*cell, qy+pad+r*cell, cell+.4, cell+.4); } }
       }catch(e){}
     }
+
+    // ID chico, centrado entre el logo y el QR. Cambia idW/idH para el tamaño
+    // del cuadro morado, y los números en '...px' para el tamaño de letra.
+    var idW = 380, idH = 64, idCx = (sx2+r2 + qx)/2;
+    rr(idCx-idW/2, rowY-idH/2, idW, idH, 22); ctx.fillStyle = pal[0]; ctx.fill(); ctx.lineWidth = 3; ctx.strokeStyle = pal[1]; ctx.stroke();
+    ctx.textAlign = 'center'; ctx.font = '600 15px '+FB; ctx.fillStyle = pal[2]; ctx.fillText('ID',idCx,rowY-idH/2+22);
+    var isz = fit(id,idW-40,26,14,'800',FD);
+    ctx.font = '800 '+isz+'px '+FD; ctx.fillStyle = '#fff'; ctx.fillText(id,idCx,rowY-idH/2+50);
 
     /* ── Franja inferior: foto de grupo + mensaje ── */
     var bandY = cy+ch-6, bandH = H-bandY;
@@ -487,10 +485,11 @@
     fade.addColorStop(0, hexA(pal[0],1)); fade.addColorStop(1, hexA(pal[0],0));
     ctx.fillStyle = fade; ctx.fillRect(0,bandY,W,bandH*0.62);
 
+    var FOOTER_LINE1 = 'Comunidad de lecheros 💜', FOOTER_LINE2 = 'Únete en ' + CONFIG.handle;
     ctx.textAlign = 'center'; ctx.font = '700 34px '+FB; ctx.fillStyle = '#fff';
-    ctx.fillText('Súbela a tus stories y etiquétanos', 540, bandY+58);
-    var hs = fit(CONFIG.handle,860,44,26,'800',FD);
-    ctx.font = '800 '+hs+'px '+FD; ctx.fillStyle = pal[2]; ctx.fillText(CONFIG.handle, 540, bandY+112);
+    ctx.fillText(FOOTER_LINE1, 540, bandY+58);
+    var hs = fit(FOOTER_LINE2,900,44,24,'800',FD);
+    ctx.font = '800 '+hs+'px '+FD; ctx.fillStyle = pal[2]; ctx.fillText(FOOTER_LINE2, 540, bandY+112);
   }
 
   function slotOrImage(img,x,y,w,h,r,label,pal,fitMode){
