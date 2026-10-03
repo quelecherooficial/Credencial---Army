@@ -353,13 +353,13 @@
     }
 
     /* ── Encabezado: título en dos líneas con brillo, logos a los lados ── */
-    var headY = 40, logoSize = 155;
+    var headY = 40, logoSize = 190;
     slotOrImage(IMAGES.logoLeft, 46, headY+70, logoSize, logoSize, 24, 'Tu logo\n(BTS)', 'contain');
     slotOrImage(IMAGES.logoRight, W-46-logoSize, headY+70, logoSize, logoSize, 24, 'Tu logo\n(BTS)', 'contain');
 
     if(IMAGES.title){
       // Tu propio diseño de "CREDENCIAL ARMY", entre los dos logos
-      var titleBoxW = W-(46+logoSize)*2-30, titleBoxH = 420;
+      var titleBoxW = W-(46+logoSize)*2-30, titleBoxH = 600;
       var td = contain(IMAGES.title, titleBoxW, titleBoxH);
       ctx.drawImage(IMAGES.title, 540-td.w/2, headY+(titleBoxH-td.h)/2, td.w, td.h);
     }else{
