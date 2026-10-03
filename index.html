@@ -1,0 +1,690 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Credencial ARMY · Que Lecherx</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700;800;900&family=Baloo+2:wght@700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#120726; --panel:#1c0d3a; --field:#2a1656; --line:rgba(255,255,255,.16);
+    --fg:#f6f0ff; --mute:#b9a9e2; --accent:#c4a3ff; --accent-ink:#1b0d36;
+    box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){--bg:#120726;--panel:#1c0d3a;--field:#2a1656;--line:rgba(255,255,255,.16);--fg:#f6f0ff;--mute:#b9a9e2;--accent:#c4a3ff;--accent-ink:#1b0d36} }
+  :root[data-theme="dark"]{--bg:#120726;--panel:#1c0d3a;--field:#2a1656;--line:rgba(255,255,255,.16);--fg:#f6f0ff;--mute:#b9a9e2;--accent:#c4a3ff;--accent-ink:#1b0d36}
+  html{scroll-padding-top:env(safe-area-inset-top,0px)}
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);font-family:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;line-height:1.5;min-height:100%}
+  .wrap{display:grid;grid-template-columns:minmax(300px,430px) 1fr;gap:36px;max-width:1040px;margin:0 auto;padding:28px 20px 56px;align-items:start}
+  h1{font-family:'Unbounded','Arial Black',system-ui,sans-serif;font-weight:800;font-size:clamp(26px,5vw,36px);line-height:1.1;margin:0 0 10px}
+  .lead{margin:0 0 22px;color:var(--mute);max-width:44ch}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:24px;padding:22px}
+  .field{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+  .field>label,.field .lbl{font-weight:700;font-size:14px}
+  .field small{color:var(--mute);font-size:13px}
+  input[type=text],input[type=number],select{width:100%;font:inherit;font-size:16px;color:var(--fg);background:var(--field);border:1px solid var(--line);border-radius:14px;padding:12px 14px;color-scheme:dark}
+  select{appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,#b9a9e2 50%),linear-gradient(135deg,#b9a9e2 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 14px) 50%;background-size:6px 6px,6px 6px;background-repeat:no-repeat;padding-right:38px}
+  input::placeholder{color:#8f7cc2}
+  input:focus-visible,select:focus-visible,button:focus-visible,.file:focus-within,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .file{display:flex;align-items:center;gap:10px;background:var(--field);border:1px dashed rgba(255,255,255,.3);border-radius:14px;padding:12px 14px;cursor:pointer;font-weight:700;font-size:15px}
+  .file input{position:absolute;opacity:0;width:1px;height:1px}
+  .file .n{font-weight:400;color:var(--mute);font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .seg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .seg input{position:absolute;opacity:0;pointer-events:none}
+  .seg label{display:flex;justify-content:center;align-items:center;padding:12px 6px;border:1px solid var(--line);border-radius:14px;background:var(--field);font-weight:700;font-size:15px;cursor:pointer;text-align:center}
+  .seg input:checked+label{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+  .seg input:focus-visible+label{outline:2px solid var(--accent);outline-offset:2px}
+  .rankout{color:var(--accent);font-weight:700;font-size:14px;min-height:20px}
+  details{background:var(--field);border-radius:14px;padding:12px 14px;margin:0 0 16px}
+  summary{cursor:pointer;font-weight:700;font-size:14px}
+  details ol{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:12px}
+  details li b{display:block;font-size:15px}
+  details li span{display:block;color:var(--accent);font-size:13px;font-weight:700}
+  details li small{display:block;color:var(--mute);font-size:13px}
+  .idline{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--field);border-radius:14px;padding:12px 14px;margin:6px 0 18px}
+  .idline b{font-family:'Unbounded','Arial Black',system-ui,sans-serif;font-weight:800;font-size:15px;color:var(--accent);text-align:right;overflow-wrap:anywhere}
+  .cta{width:100%;font:inherit;font-weight:800;font-size:17px;color:var(--accent-ink);background:var(--accent);border:0;border-radius:16px;padding:15px 18px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px}
+  .cta:disabled{opacity:.6;cursor:default}
+  .cta:active{transform:translateY(1px)}
+  .status{min-height:22px;margin:10px 0 0;color:var(--mute);font-size:14px;text-align:center}
+  .linkbtn{display:block;margin:6px auto 0;background:none;border:0;color:var(--accent);font:inherit;font-size:14px;text-decoration:underline;cursor:pointer}
+  .linkbtn[hidden]{display:none}
+  .preview{display:flex;flex-direction:column;align-items:center;gap:12px}
+  .preview p{margin:0;color:var(--mute);font-size:14px}
+  canvas{display:block;width:min(100%,calc(78vh * 9 / 16));height:auto;border-radius:22px;box-shadow:0 24px 70px rgba(0,0,0,.55);background:#2b1363}
+  #ov{position:fixed;inset:0;background:rgba(10,4,22,.94);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:calc(20px + env(safe-area-inset-top,0px)) 20px calc(20px + env(safe-area-inset-bottom,0px));z-index:10}
+  #ov[hidden]{display:none}
+  #ov img{max-width:100%;max-height:70vh;border-radius:18px}
+  #ov p{margin:0;text-align:center;max-width:32ch}
+  #ov button{font:inherit;font-weight:700;color:var(--fg);background:transparent;border:1px solid var(--line);border-radius:12px;padding:10px 18px;cursor:pointer}
+  @media (max-width:820px){.wrap{grid-template-columns:1fr;gap:28px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section>
+    <h1>Tu credencial ARMY</h1>
+    <p class="lead">Llena tus datos y comparte tu credencial. Cada vez que la compartas o la descargues, tu número de la comunidad avanza.</p>
+
+    <div class="panel">
+      <div class="field">
+        <label for="name">Tu nombre o apodo</label>
+        <input id="name" type="text" maxlength="22" autocomplete="off" placeholder="Ej. Kim, Chimmy, Luchito">
+      </div>
+      <div class="field">
+        <label for="year">ARMY desde</label>
+        <select id="year"></select>
+      </div>
+      <div class="field">
+        <label for="bias">Tu bias</label>
+        <input id="bias" type="text" maxlength="24" list="biaslist" autocomplete="off" placeholder="Ej. Jimin">
+        <datalist id="biaslist">
+          <option value="RM"><option value="Jin"><option value="SUGA"><option value="j-hope">
+          <option value="Jimin"><option value="V"><option value="Jung Kook"><option value="OT7">
+        </datalist>
+      </div>
+      <div class="rankout" id="rankOut" aria-live="polite"></div>
+      <details>
+        <summary>Ver los 5 rangos</summary>
+        <ol id="ranks"></ol>
+      </details>
+      <div class="field" role="radiogroup" aria-labelledby="tratlbl">
+        <span class="lbl" id="tratlbl">Tu ID dirá</span>
+        <div class="seg">
+          <input type="radio" name="trat" id="t1" value="LECHERA"><label for="t1">Lechera</label>
+          <input type="radio" name="trat" id="t2" value="LECHERO"><label for="t2">Lechero</label>
+          <input type="radio" name="trat" id="t3" value="LECHERX"><label for="t3">Lecherx</label>
+        </div>
+        <small>Solo sirve para armar tu ID. No aparece como dato en la credencial.</small>
+      </div>
+      <div class="field">
+        <span class="lbl">Tu foto</span>
+        <label class="file">📷 <span>Elegir foto</span> <span class="n" id="fname"></span>
+          <input id="photo" type="file" accept="image/*">
+        </label>
+        <small>Si no subes foto, se usa tu inicial.</small>
+      </div>
+
+      <div class="idline"><span>Tu próximo ID será</span><b id="idOut">LECHER_-ARMY-????</b></div>
+      <button class="cta" id="dl" type="button">📲 Compartir mi credencial</button>
+      <button class="linkbtn" id="dlonly" type="button">O solo descargar la imagen</button>
+      <button class="linkbtn" id="showimg" type="button" hidden>¿No se descargó? Ver imagen</button>
+      <p class="status" id="status" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <section class="preview">
+    <canvas id="cv" width="1080" height="1920" aria-label="Vista previa de tu credencial"></canvas>
+    <p>Tamaño historia (1080×1920)</p>
+  </section>
+</main>
+
+<div id="ov" hidden>
+  <img id="ovimg" alt="Tu credencial ARMY">
+  <p>Mantén presionada la imagen y elige <b>Guardar imagen</b>.</p>
+  <button type="button" id="ovclose">Cerrar</button>
+</div>
+
+<script>
+(function(){
+  /* ────────────────────────────────────────────────────────────────
+     AJUSTES DE MARCA — edita solo esta sección
+     ──────────────────────────────────────────────────────────────── */
+  var CONFIG = {
+    handle:   '@quelechero.oficial',
+    url:      'https://instagram.com/quelechero.oficial',
+    communityLine1: 'COMUNIDAD DE',
+    communityLine2: 'LECHERXS',
+    ctaLine: 'Presume tu rango ARMY en tus stories',
+
+    // Pega aquí la URL de tu Apps Script (termina en /exec).
+    // Si queda vacío, la página funciona en modo prueba con un contador local.
+    apiUrl: '',
+
+    // ── IMÁGENES FIJAS (las mismas para todas las credenciales) ──
+    // Pon aquí URLs https:// de imágenes ya subidas (a tu mismo repositorio
+    // de GitHub, o a un sitio que permita CORS, como imgur.com).
+    // Si dejas un campo en '', se dibuja un espacio vacío punteado.
+    images: {
+      background:'',  // de 1080×1920 (igual que la credencial), reemplaza TODO el fondo morado
+      title:     '',  // tu propia imagen con el texto "CREDENCIAL ARMY" ya diseñado
+      logoLeft:  '',  // cuadrado, el logo de BTS — arriba, a la izquierda
+      logoRight: '',  // cuadrado, el logo de BTS — arriba, a la derecha
+      brand:     '',  // circular, tu logo de Que Lecherx (reemplaza el sello "QL")
+      bottom:    ''   // ancha (apaisada), la foto que va abajo de la tarjeta
+    }
+  };
+
+  var THIS_YEAR = new Date().getFullYear(), FIRST_YEAR = 2013;
+  var RANKS = [
+    {min:0,  max:1,  name:'Baby ARMY',     emoji:'🍼', desc:'Tu historia con BTS recién comienza y ya eres parte de la familia.'},
+    {min:2,  max:4,  name:'ARMY Fiel',     emoji:'💜', desc:'Ya viviste comebacks, eras y noches sin dormir. Sigues firme.'},
+    {min:5,  max:7,  name:'ARMY Estrella', emoji:'⭐', desc:'Conoces cada era y cada coreo. Eres referencia en el fandom.'},
+    {min:8,  max:10, name:'ARMY Leyenda',  emoji:'👑', desc:'Años de historia y mil recuerdos. Has visto crecer todo esto.'},
+    {min:11, max:99, name:'ARMY OG',       emoji:'🏆', desc:'Estuviste desde los primeros años. Puro respeto para ti.'}
+  ];
+  function rankFor(year){
+    var d = Math.max(0, THIS_YEAR - Number(year));
+    for(var i=0;i<RANKS.length;i++){ if(d >= RANKS[i].min && d <= RANKS[i].max) return RANKS[i]; }
+    return RANKS[0];
+  }
+
+  // Paleta fija de marca: ya no cambia según el bias, para que la credencial
+  // se vea siempre igual de prolija (morado + blanco), como la referencia.
+  var PAL = {
+    bg0:'#150733', bg1:'#2b1363', bg2:'#1f0d4a',
+    glow:'#8b5cf6', wave1:'#7c3aed', wave2:'#a78bfa',
+    cardLight:'#f6f1ff', cardDark:'#1b0d36',
+    border:'#8b5cf6', borderSoft:'#d9cdf5',
+    textMuted:'#7a5cc4', textDark:'#24104a', textGhost:'#b9a8de',
+    pill:'#2a1256', sparkle:'#c9b8ff'
+  };
+
+  var $ = function(id){ return document.getElementById(id); };
+  var cv = $('cv'), ctx = cv.getContext('2d'), W = 1080, H = 1920;
+  var FD = "'Unbounded','Arial Black',system-ui,sans-serif";
+  var FT = "'Baloo 2','Arial Black',system-ui,sans-serif"; // título burbuja
+  var FB = "'DM Sans',system-ui,sans-serif";
+  var photo = null;
+
+  /* Año y lista de rangos */
+  (function(){
+    var sel = $('year'), html = '<option value="">Elige el año</option>';
+    for(var y=THIS_YEAR; y>=FIRST_YEAR; y--){ html += '<option value="'+y+'">'+y+'</option>'; }
+    sel.innerHTML = html;
+    var ol = $('ranks'), out = '';
+    RANKS.forEach(function(r){
+      var from = Math.max(FIRST_YEAR, THIS_YEAR - r.max), to = THIS_YEAR - r.min;
+      out += '<li><b>'+r.emoji+' '+r.name+'</b><span>ARMY desde '+(from===to?from:from+' – '+to)+'</span><small>'+r.desc+'</small></li>';
+    });
+    ol.innerHTML = out;
+  })();
+
+  function norm(s){ return (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/g,''); }
+  function hexA(hex,a){ var n = parseInt(hex.slice(1),16); return 'rgba('+(n>>16&255)+','+(n>>8&255)+','+(n&255)+','+a+')'; }
+  function hash(s){ var h = 5381; for(var i=0;i<s.length;i++){ h = ((h<<5)+h+s.charCodeAt(i))>>>0; } return h; }
+  function mulberry(a){ return function(){ a|=0; a=a+0x6D2B79F5|0; var t=Math.imul(a^a>>>15,1|a); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
+
+  /* Estado guardado en el dispositivo (solo el token, para el registro en tu hoja) */
+  var st = {};
+  try{ st = JSON.parse(localStorage.getItem('ql_state') || '{}') || {}; }catch(e){ st = {}; }
+  if(!st.token){
+    st.token = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : ('t'+Date.now().toString(36)+Math.random().toString(36).slice(2,10));
+    try{ localStorage.setItem('ql_state', JSON.stringify(st)); }catch(e){}
+  }
+
+  function vals(){
+    var r = document.querySelector('input[name=trat]:checked');
+    return {name:$('name').value.trim(), year:$('year').value, bias:$('bias').value.trim(), trat:r ? r.value : ''};
+  }
+
+  // El número todavía no asignado se muestra como "????"; se reemplaza justo
+  // antes de compartir/descargar, momento en el que SIEMPRE se pide uno nuevo.
+  var lastNumber = null;
+  function idText(v, n){
+    var p = v.trat || 'LECHER_';
+    var num = n ? String(n).padStart(4,'0') : '????';
+    return p + '-ARMY-' + num;
+  }
+
+  /* Precarga de las imágenes fijas de marca (logos y foto inferior) */
+  var IMAGES = {};
+  function loadBrandImg(url){
+    return new Promise(function(resolve){
+      if(!url){ resolve(null); return; }
+      var im = new Image();
+      im.crossOrigin = 'anonymous';
+      im.onload = function(){ resolve(im); };
+      im.onerror = function(){ resolve(null); };
+      im.src = url;
+    });
+  }
+  Promise.all([
+    loadBrandImg(CONFIG.images.background),
+    loadBrandImg(CONFIG.images.title),
+    loadBrandImg(CONFIG.images.logoLeft),
+    loadBrandImg(CONFIG.images.logoRight),
+    loadBrandImg(CONFIG.images.brand),
+    loadBrandImg(CONFIG.images.bottom)
+  ]).then(function(r){
+    IMAGES.background = r[0]; IMAGES.title = r[1]; IMAGES.logoLeft = r[2]; IMAGES.logoRight = r[3]; IMAGES.brand = r[4]; IMAGES.bottom = r[5];
+    schedule();
+  });
+
+  /* Utilidades de dibujo */
+  function rr(x,y,w,h,r){
+    ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath();
+  }
+  function fit(text,maxW,size,min,weight,fam){
+    var s = size; ctx.font = weight+' '+s+'px '+fam;
+    while(ctx.measureText(text).width > maxW && s > min){ s -= 2; ctx.font = weight+' '+s+'px '+fam; }
+    return s;
+  }
+  function clipText(text,maxW){
+    if(ctx.measureText(text).width <= maxW) return text;
+    while(text.length > 1 && ctx.measureText(text+'…').width > maxW){ text = text.slice(0,-1); }
+    return text+'…';
+  }
+  function wrap(text,maxW){
+    var words = text.split(' '), lines = [], cur = '';
+    words.forEach(function(w){
+      var t = cur ? cur+' '+w : w;
+      if(ctx.measureText(t).width > maxW && cur){ lines.push(cur); cur = w; } else cur = t;
+    });
+    if(cur) lines.push(cur);
+    return lines;
+  }
+  function wave(y,amp,freq,phase,fill,dir){
+    ctx.beginPath();
+    if(dir==='down'){ ctx.moveTo(0,0); ctx.lineTo(W,0); for(var x=W;x>=0;x-=12){ ctx.lineTo(x, y+Math.sin(x/W*Math.PI*freq+phase)*amp); } ctx.closePath(); }
+    else{ ctx.moveTo(0,H); ctx.lineTo(W,H); for(var x2=W;x2>=0;x2-=12){ ctx.lineTo(x2, y+Math.sin(x2/W*Math.PI*freq+phase)*amp); } ctx.closePath(); }
+    ctx.fillStyle = fill; ctx.fill();
+  }
+  function contain(img,bw,bh){ var s = Math.min(bw/img.width, bh/img.height); return {w:img.width*s, h:img.height*s}; }
+  function cover(img,bw,bh){ var s = Math.max(bw/img.width, bh/img.height); return {w:img.width*s, h:img.height*s}; }
+  function slotPlaceholder(x,y,w,h,r,label){
+    rr(x,y,w,h,r); ctx.fillStyle = hexA(PAL.border,.12); ctx.fill();
+    ctx.save(); rr(x,y,w,h,r); ctx.clip();
+    ctx.setLineDash([10,8]); ctx.lineWidth = 3; ctx.strokeStyle = hexA(PAL.sparkle,.7);
+    ctx.strokeRect(x+6,y+6,w-12,h-12); ctx.setLineDash([]);
+    ctx.restore();
+    ctx.textAlign = 'center';
+    var sz = fit(label, w-24, 24, 13, '700', FB);
+    ctx.font = '700 '+sz+'px '+FB; ctx.fillStyle = hexA(PAL.sparkle,.85);
+    wrap(label, w-24).forEach(function(line,i,arr){
+      ctx.fillText(line, x+w/2, y+h/2 + (i - (arr.length-1)/2) * (sz+6) + sz/3);
+    });
+  }
+  function slotOrImage(img,x,y,w,h,r,label,fitMode){
+    if(img){
+      ctx.save(); rr(x,y,w,h,r); ctx.clip();
+      var d = fitMode==='cover' ? cover(img,w,h) : contain(img,w,h);
+      ctx.drawImage(img, x+(w-d.w)/2, y+(h-d.h)/2, d.w, d.h);
+      ctx.restore();
+    }else{ slotPlaceholder(x,y,w,h,r,label); }
+  }
+  // Estrellita de 4 puntas, para los detalles decorativos.
+  function starPath(cx,cy,outerR,innerR){
+    var pts = 4, step = Math.PI/pts, rot = -Math.PI/2;
+    ctx.beginPath(); ctx.moveTo(cx+Math.cos(rot)*outerR, cy+Math.sin(rot)*outerR);
+    for(var i=0;i<pts;i++){
+      rot += step; ctx.lineTo(cx+Math.cos(rot)*innerR, cy+Math.sin(rot)*innerR);
+      rot += step; ctx.lineTo(cx+Math.cos(rot)*outerR, cy+Math.sin(rot)*outerR);
+    }
+    ctx.closePath();
+  }
+  function sparkle(cx,cy,r,alpha){
+    ctx.save(); ctx.globalAlpha = alpha==null?1:alpha; ctx.fillStyle = '#fff';
+    starPath(cx,cy,r,r*0.38); ctx.fill(); ctx.restore();
+  }
+  // Posiciones fijas de las estrellitas alrededor del título (no cambian al escribir).
+  var HEADER_STARS = [
+    [130,36,13],[620,18,9],[860,70,15],[955,235,8],[300,46,8],
+    [95,255,9],[760,255,12],[205,290,7],[970,120,7],[60,140,8]
+  ];
+
+  function draw(){
+    var v = vals(), id = idText(v, lastNumber);
+    var rank = v.year ? rankFor(v.year) : null;
+    $('idOut').textContent = id;
+    $('rankOut').textContent = rank ? (rank.emoji+' Tu rango: '+rank.name) : '';
+    ctx.clearRect(0,0,W,H);
+    ctx.textBaseline = 'alphabetic';
+
+    /* Fondo: tu imagen si la configuraste, o el degradado morado por defecto */
+    if(IMAGES.background){
+      var covBg = cover(IMAGES.background, W, H);
+      ctx.drawImage(IMAGES.background, (W-covBg.w)/2, (H-covBg.h)/2, covBg.w, covBg.h);
+    }else{
+      var g = ctx.createLinearGradient(0,0,0,H);
+      g.addColorStop(0,PAL.bg0); g.addColorStop(.45,PAL.bg1); g.addColorStop(1,PAL.bg2);
+      ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
+      var rg = ctx.createRadialGradient(540,820,50,540,820,820);
+      rg.addColorStop(0,hexA(PAL.glow,.35)); rg.addColorStop(1,hexA(PAL.glow,0));
+      ctx.fillStyle = rg; ctx.fillRect(0,0,W,H);
+      var rnd = mulberry(hash(id||'army'));
+      for(var i=0;i<46;i++){
+        var sx = rnd()*W, sy = rnd()*H*0.8, sr = 1+rnd()*3.2;
+        ctx.fillStyle = hexA(PAL.sparkle, .12+rnd()*.4);
+        ctx.beginPath(); ctx.arc(sx,sy,sr,0,7); ctx.fill();
+      }
+    }
+
+    /* ── Encabezado: título en dos líneas con brillo, logos a los lados ── */
+    var headY = 40, logoSize = 148;
+    slotOrImage(IMAGES.logoLeft, 46, headY+70, logoSize, logoSize, 24, 'Tu logo\n(BTS)', 'contain');
+    slotOrImage(IMAGES.logoRight, W-46-logoSize, headY+70, logoSize, logoSize, 24, 'Tu logo\n(BTS)', 'contain');
+
+    if(IMAGES.title){
+      // Tu propio diseño de "CREDENCIAL ARMY", entre los dos logos
+      var titleBoxW = W-(46+logoSize)*2-30, titleBoxH = 340;
+      var td = contain(IMAGES.title, titleBoxW, titleBoxH);
+      ctx.drawImage(IMAGES.title, 540-td.w/2, headY+(titleBoxH-td.h)/2, td.w, td.h);
+    }else{
+      HEADER_STARS.forEach(function(s){ sparkle(s[0], headY+s[1], s[2], .85); });
+
+      // línea decorativa curva detrás del título
+      ctx.save();
+      ctx.strokeStyle = hexA('#ffffff', .28); ctx.lineWidth = 3;
+      ctx.beginPath(); ctx.ellipse(540, headY+170, 300, 70, -0.08, 0, Math.PI*2); ctx.stroke();
+      ctx.restore();
+
+      ctx.textAlign = 'center';
+      var t1 = 'CREDENCIAL', t1size = fit(t1, 520, 54, 36, '800', FT);
+      ctx.font = '800 '+t1size+'px '+FT;
+      var tg1 = ctx.createLinearGradient(0,headY+70,0,headY+130);
+      tg1.addColorStop(0,'#ffffff'); tg1.addColorStop(1,'#d9c7ff');
+      ctx.fillStyle = tg1; ctx.fillText(t1, 540, headY+128);
+
+      var t2 = 'ARMY', t2size = fit(t2, 640, 168, 90, '800', FT);
+      ctx.font = '800 '+t2size+'px '+FT;
+      var tg2 = ctx.createLinearGradient(0,headY+150,0,headY+300);
+      tg2.addColorStop(0,'#ffffff'); tg2.addColorStop(1,'#c9b2ff');
+      ctx.save(); ctx.shadowColor = hexA(PAL.glow,.9); ctx.shadowBlur = 40;
+      ctx.fillStyle = tg2; ctx.fillText(t2, 540, headY+288);
+      ctx.restore();
+    }
+
+    /* ── Medir por adelantado el contenido de la tarjeta, para saber su alto ── */
+    var cx = 90, cw = 900, cy = headY + 380;
+    var rk = rank || {name:'Tu rango', emoji:'💜', desc:'Elige el año en que te hiciste ARMY para descubrir tu rango.'};
+    ctx.font = '700 36px '+FB;
+    var descLines = wrap(rk.desc,760).slice(0,3);
+    // La foto (py+ph) es lo más alto de esta zona — el divisor y el rango SIEMPRE
+    // van debajo de ella, sin importar cuántas filas de texto haya.
+    var DIVIDER_Y = (cy+70) + 360 + 30;
+    var RANK_Y = DIVIDER_Y + 32, RANK_H = 118, RANK_FONT = 54;
+    var DESC_Y = RANK_Y + RANK_H + 72, DESC_LINE_H = 46;
+    var descBottom = DESC_Y + (descLines.length-1)*DESC_LINE_H;
+    var idY = descBottom + 56, idH = 64, idBottom = idY+idH;
+    var waveY = idBottom + 46, darkH = 258;
+    var ch = (waveY + darkH) - cy;
+
+    /* ── Tarjeta (parte superior clara) ── */
+    ctx.save(); ctx.shadowColor = 'rgba(0,0,0,.45)'; ctx.shadowBlur = 60; ctx.shadowOffsetY = 24;
+    rr(cx,cy,cw,ch,52); ctx.fillStyle = PAL.cardLight; ctx.fill(); ctx.restore();
+    ctx.save(); rr(cx,cy,cw,ch,52); ctx.clip();
+    var bgc = ctx.createLinearGradient(cx,0,cx+cw,0); bgc.addColorStop(0,PAL.border); bgc.addColorStop(1,'#a78bfa');
+    ctx.fillStyle = bgc; ctx.fillRect(cx,cy,cw,20); ctx.restore();
+
+    /* Foto de la persona, con detalle de corazón */
+    var px = 140, py = cy+70, pw = 340, ph = 360;
+    ctx.save(); rr(px,py,pw,ph,32); ctx.clip();
+    if(photo){
+      var s = Math.max(pw/photo.width, ph/photo.height), iw = photo.width*s, ih = photo.height*s;
+      ctx.drawImage(photo, px+(pw-iw)/2, py+(ph-ih)/2, iw, ih);
+    }else{
+      var pg = ctx.createLinearGradient(px,py,px+pw,py+ph); pg.addColorStop(0,PAL.cardDark); pg.addColorStop(1,PAL.border);
+      ctx.fillStyle = pg; ctx.fillRect(px,py,pw,ph);
+      var ini = (v.name||'?').charAt(0).toUpperCase();
+      ctx.textAlign = 'center'; ctx.fillStyle = 'rgba(255,255,255,.92)'; ctx.font = '900 150px '+FD;
+      ctx.fillText(ini, px+pw/2, py+ph/2+54);
+    }
+    ctx.restore();
+    rr(px,py,pw,ph,32); ctx.lineWidth = 6; ctx.strokeStyle = PAL.border; ctx.stroke();
+    ctx.font = '26px '+FB; ctx.fillStyle = '#fff'; ctx.textAlign='right'; ctx.fillText('♡', px+pw-18, py+40);
+
+    /* Datos, con una línea fina debajo de cada uno */
+    var rows = [
+      ['Nombre', v.name || 'Tu nombre', !v.name],
+      ['ARMY desde', v.year || 'Año', !v.year],
+      ['Bias', v.bias || 'Tu bias', !v.bias]
+    ];
+    var dx = px+pw+40, dw = (cx+cw-24)-dx, ry = py-6; ctx.textAlign = 'left';
+    rows.forEach(function(r){
+      ctx.font = '700 24px '+FB; ctx.fillStyle = PAL.textMuted; ctx.fillText(r[0],dx,ry+24);
+      var size = fit(String(r[1]),dw,42,22,'700',FD);
+      ctx.font = '700 '+size+'px '+FD;
+      ctx.fillStyle = r[2] ? PAL.textGhost : PAL.textDark;
+      ctx.fillText(clipText(String(r[1]),dw),dx,ry+72);
+      ctx.strokeStyle = hexA(PAL.border,.25); ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(dx,ry+82); ctx.lineTo(cx+cw-24,ry+82); ctx.stroke();
+      ry += 92;
+    });
+
+    ctx.strokeStyle = PAL.borderSoft; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(140,DIVIDER_Y); ctx.lineTo(940,DIVIDER_Y); ctx.stroke();
+
+    /* Rango: ahora es lo más grande y notorio de la tarjeta, debajo de la foto */
+    var bt = rk.emoji + ' ' + rk.name;
+    ctx.font = '800 '+RANK_FONT+'px '+FD;
+    var bw = Math.min(860, ctx.measureText(bt).width + 120);
+    rr(540-bw/2, RANK_Y, bw, RANK_H, RANK_H/2); ctx.fillStyle = PAL.pill; ctx.fill();
+    ctx.lineWidth = 4; ctx.strokeStyle = hexA(PAL.border,.8); ctx.stroke();
+    ctx.textAlign = 'center'; ctx.fillStyle = '#fff'; ctx.fillText(bt,540,RANK_Y+RANK_H/2+RANK_FONT*0.33);
+    sparkle(540-bw/2-30, RANK_Y+RANK_H/2, 14, .9); sparkle(540+bw/2+30, RANK_Y+RANK_H/2, 14, .9);
+
+    ctx.font = '700 36px '+FB; ctx.fillStyle = rank ? '#3d2a72' : '#9686c4';
+    descLines.forEach(function(line,li){ ctx.fillText(line,540,DESC_Y+li*DESC_LINE_H); });
+
+    /* ID: pastilla chica y discreta, ya no protagonista */
+    var idW = 460, idX = 540-idW/2;
+    rr(idX,idY,idW,idH,idH/2); ctx.fillStyle = PAL.pill; ctx.fill(); ctx.lineWidth = 3; ctx.strokeStyle = hexA(PAL.border,.7); ctx.stroke();
+    ctx.textAlign = 'left'; ctx.font = '600 16px '+FB; ctx.fillStyle = PAL.sparkle; ctx.fillText('ID', idX+26, idY+idH/2+6);
+    var isz = fit(id,idW-100,24,14,'800',FD);
+    ctx.textAlign = 'center'; ctx.font = '800 '+isz+'px '+FD; ctx.fillStyle = '#fff'; ctx.fillText(id,idX+idW/2+16,idY+idH/2+8);
+    sparkle(idX+idW+24, idY+idH/2, 10, .9);
+
+    /* ── Curva hacia la sección oscura ── */
+    ctx.save(); rr(cx,cy,cw,ch,52); ctx.clip();
+    wave(waveY, 18, 2.4, .4, PAL.cardDark, 'up');
+    ctx.fillStyle = PAL.cardDark; ctx.fillRect(0, waveY+18, W, (cy+ch)-(waveY+18));
+    ctx.restore();
+
+    /* Logo circular + divisor + comunidad + QR, sobre fondo oscuro */
+    var rowY = waveY + darkH/2 + 14, sx2 = 232, r2 = 86;
+    if(IMAGES.brand){
+      ctx.save(); ctx.beginPath(); ctx.arc(sx2,rowY,r2,0,7); ctx.clip();
+      var cov = cover(IMAGES.brand, r2*2, r2*2);
+      ctx.drawImage(IMAGES.brand, sx2-cov.w/2, rowY-cov.h/2, cov.w, cov.h);
+      ctx.restore();
+      ctx.lineWidth = 5; ctx.strokeStyle = PAL.border; ctx.beginPath(); ctx.arc(sx2,rowY,r2,0,7); ctx.stroke();
+    }else{
+      ctx.beginPath(); ctx.arc(sx2,rowY,r2,0,7); ctx.fillStyle = hexA(PAL.border,.16); ctx.fill();
+      ctx.lineWidth = 5; ctx.strokeStyle = PAL.border; ctx.stroke();
+      ctx.beginPath(); ctx.arc(sx2,rowY,r2-14,0,7); ctx.setLineDash([6,8]); ctx.lineWidth = 3; ctx.strokeStyle = hexA(PAL.sparkle,.7); ctx.stroke(); ctx.setLineDash([]);
+      ctx.textAlign = 'center'; ctx.font = '26px '+FB; ctx.fillStyle = '#fff'; ctx.fillText('👑', sx2, rowY-24);
+      ctx.fillStyle = '#fff'; ctx.font = '900 44px '+FD; ctx.fillText('QL', sx2, rowY+24);
+      ctx.fillStyle = PAL.sparkle; ctx.font = '800 14px '+FD; if('letterSpacing' in ctx) ctx.letterSpacing = '2px';
+      ctx.fillText('OFICIAL', sx2+1, rowY+50); if('letterSpacing' in ctx) ctx.letterSpacing = '0px';
+    }
+    ctx.strokeStyle = hexA('#ffffff',.25); ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(sx2+r2+30, rowY-60); ctx.lineTo(sx2+r2+30, rowY+60); ctx.stroke();
+
+    var qs = 148, qx = cx+cw-24-qs, qy = rowY-qs/2;
+    var zoneLeft = sx2+r2+30+24, zoneRight = qx-24, zoneCx = (zoneLeft+zoneRight)/2, zoneW = zoneRight-zoneLeft;
+    ctx.textAlign = 'center';
+    ctx.font = '700 26px '+FD; ctx.fillStyle = hexA('#ffffff',.75); ctx.fillText(CONFIG.communityLine1, zoneCx, rowY-6);
+    var c2sz = fit(CONFIG.communityLine2, zoneW, 46, 26, '900', FD);
+    ctx.font = '900 '+c2sz+'px '+FD; ctx.fillStyle = '#fff'; ctx.fillText(CONFIG.communityLine2, zoneCx, rowY+46);
+    if(typeof qrcode === 'function'){
+      try{
+        var q = qrcode(0,'Q'); q.addData(CONFIG.url); q.make();
+        var n = q.getModuleCount(), pad = 12, cell = (qs-pad*2)/n;
+        rr(qx,qy,qs,qs,18); ctx.fillStyle = '#fff'; ctx.fill();
+        ctx.fillStyle = '#24104a';
+        for(var r=0;r<n;r++){ for(var c=0;c<n;c++){ if(q.isDark(r,c)) ctx.fillRect(qx+pad+c*cell, qy+pad+r*cell, cell+.4, cell+.4); } }
+        ctx.beginPath(); ctx.arc(qx+qs/2,qy+qs/2,20,0,7); ctx.fillStyle='#fff'; ctx.fill();
+        ctx.font = '22px '+FB; ctx.textAlign='center'; ctx.fillStyle = PAL.border; ctx.fillText('♥', qx+qs/2, qy+qs/2+8);
+      }catch(e){}
+    }
+
+    /* ── Franja inferior: foto de grupo ── */
+    var bandY = cy+ch-6, bandH = H-bandY;
+    var ANCLA_FOTO = 0.12;
+    if(IMAGES.bottom){
+      var cov2 = cover(IMAGES.bottom, W, bandH);
+      ctx.save(); ctx.beginPath(); ctx.rect(0,bandY,W,bandH); ctx.clip();
+      ctx.drawImage(IMAGES.bottom, (W-cov2.w)/2, bandY-(cov2.h-bandH)*ANCLA_FOTO, cov2.w, cov2.h);
+      ctx.restore();
+    }else{
+      slotPlaceholder(24, bandY+16, W-48, bandH-32, 28, 'Espacio para tu foto de grupo (horizontal)');
+    }
+    var FADE_ALTO = 0.78, TINTE = 0.2;
+    var fade = ctx.createLinearGradient(0,bandY,0,bandY+bandH*FADE_ALTO);
+    fade.addColorStop(0, hexA(PAL.bg2,1)); fade.addColorStop(1, hexA(PAL.bg2,0));
+    ctx.fillStyle = fade; ctx.fillRect(0,bandY,W,bandH*FADE_ALTO);
+    ctx.fillStyle = hexA(PAL.bg2,TINTE); ctx.fillRect(0,bandY,W,bandH);
+
+    ctx.textAlign = 'center'; ctx.font = '700 36px '+FB; ctx.fillStyle = '#fff';
+    var ctaW = ctx.measureText(CONFIG.ctaLine).width;
+    sparkle(540-ctaW/2-28, bandY+50, 10, .9); sparkle(540+ctaW/2+28, bandY+50, 10, .9);
+    ctx.fillText(CONFIG.ctaLine, 540, bandY+58);
+  }
+
+  /* Render con pausa corta al escribir */
+  var tm;
+  function schedule(){ clearTimeout(tm); tm = setTimeout(draw,90); }
+  ['name','year','bias'].forEach(function(id){ $(id).addEventListener('input',schedule); });
+  Array.prototype.forEach.call(document.querySelectorAll('input[name=trat]'),function(el){ el.addEventListener('change',schedule); });
+
+  $('photo').addEventListener('change',function(e){
+    var f = e.target.files && e.target.files[0]; if(!f) return;
+    $('fname').textContent = f.name;
+    var r = new FileReader();
+    r.onload = function(){ var im = new Image(); im.onload = function(){ photo = im; schedule(); }; im.src = r.result; };
+    r.readAsDataURL(f);
+  });
+
+  /* Fuentes y QR */
+  function fonts(){
+    try{
+      return Promise.all([
+        document.fonts.load('900 40px Unbounded'), document.fonts.load('800 40px Unbounded'), document.fonts.load('700 40px Unbounded'),
+        document.fonts.load('800 80px "Baloo 2"'), document.fonts.load('700 80px "Baloo 2"'),
+        document.fonts.load('500 30px "DM Sans"'), document.fonts.load('700 30px "DM Sans"')
+      ]).catch(function(){});
+    }catch(e){ return Promise.resolve(); }
+  }
+  (function loadQR(){
+    var urls = ['https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js','https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js'], i = 0;
+    function next(){
+      if(typeof qrcode === 'function' || i >= urls.length){ schedule(); return; }
+      var s = document.createElement('script'); s.src = urls[i++];
+      s.onload = function(){ if(typeof qrcode === 'function') schedule(); else next(); };
+      s.onerror = next; document.head.appendChild(s);
+    }
+    next();
+  })();
+  draw(); fonts().then(draw);
+
+  /* Número consecutivo — AHORA se pide uno nuevo cada vez que se comparte o descarga */
+  function demoNumber(){
+    var n = 1;
+    try{ n = Number(localStorage.getItem('ql_demo_n') || 0) + 1; localStorage.setItem('ql_demo_n', String(n)); }catch(e){}
+    return n;
+  }
+  async function requestNextNumber(v){
+    if(!CONFIG.apiUrl) return demoNumber();
+    var ctrl = new AbortController(), to = setTimeout(function(){ ctrl.abort(); }, 15000);
+    var res = await fetch(CONFIG.apiUrl, {
+      method:'POST',
+      headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body: JSON.stringify({token:st.token, name:v.name, trat:v.trat, year:v.year, bias:v.bias, rank:rankFor(v.year).name}),
+      signal: ctrl.signal
+    });
+    clearTimeout(to);
+    var data = await res.json();
+    if(!data || !data.ok || !data.number) throw new Error((data && data.error) || 'sin_numero');
+    return Number(data.number);
+  }
+
+  /* Compartir / descargar */
+  var status = $('status'), dlBtn = $('dl');
+  function say(t){ status.textContent = t; }
+  function slug(s){ return (s||'army').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'') || 'army'; }
+  function showOverlay(){ $('ovimg').src = cv.toDataURL('image/png'); $('ov').hidden = false; }
+  $('ovclose').addEventListener('click',function(){ $('ov').hidden = true; });
+  $('showimg').addEventListener('click',showOverlay);
+  function anchorDownload(blob,filename){
+    var url = URL.createObjectURL(blob), a = document.createElement('a');
+    a.href = url; a.download = filename; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url); },5000);
+  }
+  function missing(v){
+    var m = [];
+    if(!v.name) m.push('tu nombre o apodo');
+    if(!v.year) m.push('el año desde que eres ARMY');
+    if(!v.bias) m.push('tu bias');
+    if(!v.trat) m.push('cómo dirá tu ID');
+    return m;
+  }
+
+  async function downloadBlob(blob, filename){
+    var cap = null;
+    try{
+      if(window.claude && window.claude.use){
+        cap = await Promise.race([ window.claude.use('downloads'), new Promise(function(r){ setTimeout(function(){ r(null); },4000); }) ]);
+      }
+    }catch(e){ cap = null; }
+    if(cap){
+      try{ await cap.save({filename:filename, data:blob}); return true; }
+      catch(err){ if(err && err.code === 'declined') return 'declined'; }
+    }
+    try{ anchorDownload(blob,filename); return true; }catch(e){ return false; }
+  }
+
+  // Lógica común a los dos botones: valida, pide el siguiente número, y genera la imagen.
+  async function prepare(btn){
+    var v = vals(), m = missing(v);
+    if(m.length){ say('Falta: '+m.join(', ')+'.'); return null; }
+    btn.disabled = true;
+    say('Asignando tu número…');
+    try{ lastNumber = await requestNextNumber(v); }
+    catch(err){
+      say('No pudimos asignar tu número. Revisa tu internet e inténtalo otra vez.');
+      btn.disabled = false; return null;
+    }
+    say('Preparando tu credencial…');
+    await fonts(); draw();
+    var finalId = idText(v, lastNumber), filename = 'credencial-army-'+slug(v.name)+'.png';
+    var blob = null;
+    try{ blob = await new Promise(function(res,rej){ cv.toBlob(function(b){ b?res(b):rej(new Error('vacio')); },'image/png'); }); }
+    catch(err){
+      say('Una de tus imágenes de marca bloquea la descarga (revisa el aviso de CORS en el código). Quítala o cámbiala de hosting.');
+      btn.disabled = false; return null;
+    }
+    return {v:v, finalId:finalId, filename:filename, blob:blob};
+  }
+
+  var dlonlyBtn = $('dlonly');
+
+  // Botón principal: intenta el panel nativo de compartir (en el celular incluye
+  // Instagram, WhatsApp, Guardar imagen, etc. todo junto); si no se puede, descarga.
+  dlBtn.addEventListener('click',async function(){
+    var r = await prepare(dlBtn); if(!r) return;
+    var shared = false;
+    try{
+      var file = new File([r.blob], r.filename, {type:'image/png'});
+      if(navigator.canShare && navigator.canShare({files:[file]})){
+        await navigator.share({files:[file], title:'Mi credencial ARMY', text:'Mi credencial de '+CONFIG.handle});
+        shared = true;
+      }
+    }catch(e){ /* el usuario canceló o el navegador no lo soporta: seguimos con la descarga */ }
+
+    if(shared){ say('Listo 💜 Tu ID es '+r.finalId); dlBtn.disabled = false; return; }
+
+    var saved = await downloadBlob(r.blob, r.filename);
+    if(saved === 'declined'){ say('No se guardó. Tu ID es '+r.finalId+'. Toca el botón cuando quieras.'); dlBtn.disabled = false; return; }
+    $('showimg').hidden = false;
+    say(saved ? 'Listo 💜 Tu ID es '+r.finalId+'. Súbela a tus stories y etiqueta a '+CONFIG.handle
+              : 'Tu ID es '+r.finalId+'. Toca "Ver imagen" para guardarla.');
+    if(!saved) showOverlay();
+    dlBtn.disabled = false;
+  });
+
+  // Botón secundario: va directo a descargar, sin pasar por el panel de compartir.
+  dlonlyBtn.addEventListener('click',async function(){
+    var r = await prepare(dlonlyBtn); if(!r) return;
+    var saved = await downloadBlob(r.blob, r.filename);
+    if(saved === 'declined'){ say('No se guardó. Tu ID es '+r.finalId+'. Toca el botón cuando quieras.'); dlonlyBtn.disabled = false; return; }
+    $('showimg').hidden = false;
+    say(saved ? 'Listo 💜 Tu ID es '+r.finalId : 'Tu ID es '+r.finalId+'. Toca "Ver imagen" para guardarla.');
+    if(!saved) showOverlay();
+    dlonlyBtn.disabled = false;
+  });
+})();
+</script>
+</body>
+</html>
