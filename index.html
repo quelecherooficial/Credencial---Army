@@ -361,7 +361,7 @@
       // Tu propio diseño de "CREDENCIAL ARMY", entre los dos logos
       var titleBoxW = W-(46+logoSize)*2-30, titleBoxH = 1000;
       var td = contain(IMAGES.title, titleBoxW, titleBoxH);
-      ctx.drawImage(IMAGES.title, 540-td.w/2, headY+(titleBoxH-td.h)/2, td.w, td.h);
+      ctx.drawImage(IMAGES.title, 540-td.w/2, headY+(titleBoxH-td.h)/2-50, td.w, td.h);
     }else{
       HEADER_STARS.forEach(function(s){ sparkle(s[0], headY+s[1], s[2], .85); });
 
