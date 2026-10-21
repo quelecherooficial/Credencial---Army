@@ -403,7 +403,7 @@
     var ch = (waveY + darkH) - cy;
 
     /* ── Tarjeta (parte superior clara) ── */
-    ctx.save(); ctx.shadowColor = 'rgba(0,0,0,.45)'; ctx.shadowBlur = 60; ctx.shadowOffsetY = 24;
+    ctx.save(); ctx.shadowColor = 'rgba(0,0,0,0)'; ctx.shadowBlur = 60; ctx.shadowOffsetY = 24;
     rr(cx,cy,cw,ch,52); ctx.fillStyle = PAL.cardLight; ctx.fill(); ctx.restore();
     ctx.save(); rr(cx,cy,cw,ch,52); ctx.clip();
     var bgc = ctx.createLinearGradient(cx,0,cx+cw,0); bgc.addColorStop(0,PAL.border); bgc.addColorStop(1,'#a78bfa');
@@ -521,11 +521,11 @@
     }else{
       slotPlaceholder(24, bandY+16, W-48, bandH-32, 28, 'Espacio para tu foto de grupo (horizontal)');
     }
-    //var FADE_ALTO = 0.78, TINTE = 0.2;
-    //var fade = ctx.createLinearGradient(0,bandY,0,bandY+bandH*FADE_ALTO);
-    //fade.addColorStop(0, hexA(PAL.bg2,1)); fade.addColorStop(1, hexA(PAL.bg2,0));
-    //ctx.fillStyle = fade; ctx.fillRect(0,bandY,W,bandH*FADE_ALTO);
-    //ctx.fillStyle = hexA(PAL.bg2,TINTE); ctx.fillRect(0,bandY,W,bandH);
+    var FADE_ALTO = 0.78, TINTE = 0.2;
+    var fade = ctx.createLinearGradient(0,bandY,0,bandY+bandH*FADE_ALTO);
+    fade.addColorStop(0, hexA(PAL.bg2,1)); fade.addColorStop(1, hexA(PAL.bg2,0));
+    ctx.fillStyle = fade; ctx.fillRect(0,bandY,W,bandH*FADE_ALTO);
+    ctx.fillStyle = hexA(PAL.bg2,TINTE); ctx.fillRect(0,bandY,W,bandH);
 
     ctx.textAlign = 'center'; ctx.font = '700 36px '+FB; ctx.fillStyle = '#fff';
     var ctaW = ctx.measureText(CONFIG.ctaLine).width;
