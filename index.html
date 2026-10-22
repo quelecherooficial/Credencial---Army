@@ -511,8 +511,8 @@
     }
 
     /* ── Franja inferior: foto de grupo ── */
-    var bandY = cy+ch-100, bandH = H-bandY;
-    var ANCLA_FOTO = 0.8;
+    var bandY = cy+ch-6, bandH = H-bandY;
+    var ANCLA_FOTO = 0.6;
     if(IMAGES.bottom){
       var cov2 = cover(IMAGES.bottom, W, bandH);
       ctx.save(); ctx.beginPath(); ctx.rect(0,bandY,W,bandH); ctx.clip();
