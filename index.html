@@ -86,10 +86,12 @@
         </datalist>
       </div>
       <div class="rankout" id="rankOut" aria-live="polite"></div>
+      <!--
       <details>
         <summary>Ver los 5 rangos</summary>
         <ol id="ranks"></ol>
       </details>
+      -->
       <div class="field" role="radiogroup" aria-labelledby="tratlbl">
         <span class="lbl" id="tratlbl">Tu ID dirá</span>
         <div class="seg">
@@ -194,12 +196,12 @@
     var sel = $('year'), html = '<option value="">Elige el año</option>';
     for(var y=THIS_YEAR; y>=FIRST_YEAR; y--){ html += '<option value="'+y+'">'+y+'</option>'; }
     sel.innerHTML = html;
-    var ol = $('ranks'), out = '';
-    RANKS.forEach(function(r){
-      var from = Math.max(FIRST_YEAR, THIS_YEAR - r.max), to = THIS_YEAR - r.min;
-      out += '<li><b>'+r.emoji+' '+r.name+'</b><span>ARMY desde '+(from===to?from:from+' – '+to)+'</span><small>'+r.desc+'</small></li>';
-    });
-    ol.innerHTML = out;
+    //var ol = $('ranks'), out = '';
+    //RANKS.forEach(function(r){
+    //  var from = Math.max(FIRST_YEAR, THIS_YEAR - r.max), to = THIS_YEAR - r.min;
+    //  out += '<li><b>'+r.emoji+' '+r.name+'</b><span>ARMY desde '+(from===to?from:from+' – '+to)+'</span><small>'+r.desc+'</small></li>';
+    //});
+    //ol.innerHTML = out;
   })();
 
   function norm(s){ return (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/g,''); }
