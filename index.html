@@ -495,9 +495,11 @@
     var qs = 148, qx = cx+cw-24-qs, qy = rowY-qs/2;
     var zoneLeft = sx2+r2+30+24, zoneRight = qx-24, zoneCx = (zoneLeft+zoneRight)/2, zoneW = zoneRight-zoneLeft;
     ctx.textAlign = 'center';
-    ctx.font = '700 26px '+FD; ctx.fillStyle = hexA('#ffffff',.75); ctx.fillText(CONFIG.communityLine1, zoneCx, rowY-6);
+    ctx.font = '700 26px '+FD; ctx.fillStyle = hexA('#ffffff',.75); ctx.fillText(CONFIG.communityLine1, zoneCx, rowY-40);
     var c2sz = fit(CONFIG.communityLine2, zoneW, 46, 26, '900', FD);
-    ctx.font = '900 '+c2sz+'px '+FD; ctx.fillStyle = '#fff'; ctx.fillText(CONFIG.communityLine2, zoneCx, rowY+46);
+    ctx.font = '900 '+c2sz+'px '+FD; ctx.fillStyle = '#fff'; ctx.fillText(CONFIG.communityLine2, zoneCx, rowY+10);
+    var hsz = fit(CONFIG.handle, zoneW, 28, 16, '700', FD);
+    ctx.font = '700 '+hsz+'px '+FD; ctx.fillStyle = PAL.sparkle; ctx.fillText(CONFIG.handle, zoneCx, rowY+52);
     if(typeof qrcode === 'function'){
       try{
         var q = qrcode(0,'Q'); q.addData(CONFIG.url); q.make();
